@@ -8,13 +8,18 @@ export function Stats() {
           <div key={s.label} className="text-center">
             {/* data-* guarda o alvo do counter — a animação GSAP lê daqui depois */}
             <p
-              className="text-4xl font-bold text-[#39d353] md:text-5xl"
-              data-counter={s.valor}
-              data-decimal={'decimal' in s && s.decimal ? 'true' : 'false'}
-            >
-              {s.valor.toLocaleString('pt-BR')}
-              {s.sufixo}
-            </p>
+  data-reveal
+  className="text-4xl font-bold text-[#39d353] md:text-5xl"
+>
+  {s.prefixo}
+  <span
+    data-counter={s.valor}
+    data-decimal={'decimal' in s && s.decimal ? 'true' : 'false'}
+  >
+    {s.valor.toLocaleString('pt-BR')}
+  </span>
+  {s.sufixo}
+</p>
             <p className="mt-2 text-sm text-gray-500">{s.label}</p>
           </div>
         ))}

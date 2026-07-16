@@ -1,17 +1,19 @@
 import { DEPOIMENTOS } from '@/lib/content';
-
 export function Depoimentos() {
   return (
-    <section className="bg-[#0a0a0f] py-28">
+    <section id="historias" className="bg-[#0a0a0f] py-28">
       <div className="mx-auto max-w-7xl px-6">
-        <span className="font-mono text-sm text-[#39d353]">{"// histórias reais"}</span>
-        <h2 className="mt-3 max-w-2xl text-4xl font-bold text-white md:text-5xl">
+       <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#39d353]/15 font-mono text-sm font-bold text-[#39d353]">
+  {'// Historias reais'}
+</span>
+        <h2 data-reveal className="mt-3 max-w-2xl text-4xl font-bold text-white md:text-5xl">
           Quem passou por aqui, hoje vive de código
         </h2>
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {DEPOIMENTOS.map((d) => (
             <figure
+            data-reveal
               key={d.nome}
               className="rounded-2xl border border-white/10 bg-white/[0.02] p-8"
             >
@@ -19,7 +21,7 @@ export function Depoimentos() {
                 “{d.texto}”
               </blockquote>
               <figcaption className="mt-6 flex items-center gap-4">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#39d353]/15 font-mono text-sm font-bold text-[#39d353]">
+                <span data-reveal className="flex h-11 w-11 items-center justify-center rounded-full bg-[#39d353]/15 font-mono text-sm font-bold text-[#39d353]">
                   {d.avatar}
                 </span>
                 <div>
