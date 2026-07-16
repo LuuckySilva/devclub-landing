@@ -1,76 +1,96 @@
 export const FORMACOES = [
   {
     id: 'fullstack',
-    nome: 'Formação Full Stack',
+    nome: 'DevClub Full Stack',
     descricao:
-      'HTML, CSS, JavaScript, React, Node.js e banco de dados. Do primeiro "Hello World" ao deploy em produção.',
-    tags: ['React', 'Node.js', 'PostgreSQL'],
+      'A formação principal: HTML, CSS, JavaScript, React, Node.js e banco de dados. Do primeiro "Hello World" ao deploy em produção.',
+    tags: ['HTML/CSS', 'JavaScript', 'React', 'Node.js', 'PostgreSQL'],
     destaque: true,
   },
   {
     id: 'frontend',
-    nome: 'Front-End Profissional',
+    nome: 'Front-end Club',
     descricao:
-      'Interfaces modernas com React, TypeScript e as ferramentas que o mercado usa de verdade.',
-    tags: ['React', 'TypeScript', 'Tailwind'],
+      'Mais de 20 módulos para dominar interfaces modernas com as ferramentas que o mercado usa de verdade.',
+    tags: ['HTML5', 'CSS3', 'JavaScript', 'React'],
+    destaque: false,
+  },
+  {
+    id: 'data',
+    nome: 'Data Club',
+    descricao:
+      'Análise de dados do zero: cada gráfico e cada dataset é uma chance de desvendar insights valiosos.',
+    tags: ['Python', 'SQL', 'Dashboards'],
     destaque: false,
   },
   {
     id: 'ia',
-    nome: 'IA para Devs',
+    nome: 'IA Club',
     descricao:
-      'Integre LLMs em aplicações reais: OpenAI API, agentes, automação e prompt engineering.',
-    tags: ['OpenAI', 'Agentes', 'Automação'],
+      'Conhecimento técnico e aplicação prática em Inteligência Artificial e Automação para o novo cenário digital.',
+    tags: ['LLMs', 'Automação', 'Prompt Engineering'],
     destaque: false,
   },
   {
-    id: 'carreira',
-    nome: 'Aceleração de Carreira',
+    id: 'mba',
+    nome: 'MBA em IA e Automações',
     descricao:
-      'LinkedIn, portfólio, entrevistas técnicas e negociação salarial. A ponte entre o código e o contrato.',
-    tags: ['Portfólio', 'Entrevistas', 'LinkedIn'],
+      'Inteligência Artificial e Automações aplicadas a negócios: da engenharia de prompt às aplicações práticas.',
+    tags: ['IA para Negócios', 'Automações', 'Engenharia de Prompt'],
+    destaque: false,
+  },
+  {
+    id: 'elite',
+    nome: 'DevClub Elite',
+    descricao:
+      'O caminho para os mais altos níveis de proficiência técnica, com mentoria dos melhores e desafios de classe elite.',
+    tags: ['React', 'Node.js', 'NestJS', 'MongoDB', 'PostgreSQL'],
     destaque: false,
   },
 ] as const;
 
 export const DEPOIMENTOS = [
   {
-    nome: 'Mariana Costa',
-    cargo: 'Dev Front-End na TechBank',
+    nome: 'Carlos Mendes',
+    cargo: 'Antes: técnico de suporte → Hoje: Dev Full Stack',
     texto:
-      'Saí do atendimento ao cliente para o meu primeiro emprego dev em 11 meses. O método funciona: projeto real, código revisado e preparação de entrevista.',
-    avatar: 'MC',
+      'Foram várias noites em claro estudando. Tive muitos "não" e nunca abaixei a cabeça. Hoje tenho uma vaga que eu nem sonhava.',
+    avatar: 'CM',
   },
   {
-    nome: 'Rafael Oliveira',
-    cargo: 'Full Stack na StartupXYZ',
+    nome: 'Thais Ribeiro',
+    cargo: 'Antes: dona de hamburgueria → Hoje: Dev Front-End',
     texto:
-      'Fiz 3 bootcamps antes e nada. Aqui em 8 meses eu tinha portfólio, GitHub organizado e proposta assinada. A diferença é o foco em empregabilidade.',
-    avatar: 'RO',
+      'Me separei com duas filhas e voltei pra casa dos meus pais. Entendi que precisava estudar se quisesse me erguer. A programação foi a porta.',
+    avatar: 'TR',
   },
   {
-    nome: 'Juliana Santos',
-    cargo: 'Dev Júnior na FinCorp',
+    nome: 'André Nascimento',
+    cargo: 'Antes: professor de matemática → Hoje: Front-End Jr',
     texto:
-      'Mãe, 34 anos, zero experiência em tech. Hoje trabalho remoto ganhando 3x o que ganhava. O suporte da comunidade fez toda a diferença.',
-    avatar: 'JS',
+      'Comecei como full stack jr, mudei de cargo, recebi proposta melhor em menos de 2 anos. A curva de crescimento é real.',
+    avatar: 'AN',
   },
 ] as const;
 
 export const EMPRESAS = [
-  'TechBank', 'FinCorp', 'StartupXYZ', 'DataLabs',
-  'CloudNine', 'PixelSoft', 'CodeWave', 'NexGen',
+  'Santander', 'BTG Pactual', 'Toro Investimentos', 'iFood',
+  'Stone', 'PagSeguro', 'Hostinger', 'Mercado Livre',
 ] as const;
 
 export const STATS = [
-  { valor: 50000, sufixo: '+', label: 'Alunos formados' },
-  { valor: 87, sufixo: '%', label: 'Empregados em até 12 meses' },
-  { valor: 4200, sufixo: '+', label: 'Empresas contratantes' },
-  { valor: 4.9, sufixo: '/5', label: 'Avaliação média', decimal: true },
+  { valor: 22000, prefixo: '+', sufixo: '', label: 'Alunos formados' },
+  { valor: 7000, prefixo: 'R$', sufixo: '+', label: 'Salário médio dos alunos' },
+  { valor: 5, prefixo: '', sufixo: '+', label: 'Anos formando devs' },
+  { valor: 4.9, prefixo: '', sufixo: '/5', label: 'Avaliação média', decimal: true },
 ] as const;
 
 export const TIME = [
-  { nome: 'Rodolfo Mori', papel: 'Fundador & CEO', avatar: 'RM' },
+  {
+    nome: 'Rodolfo Mori',
+    papel: 'Fundador & CEO — ex-Santander, BTG e Toro',
+    avatar: 'RM',
+  },
   { nome: 'George Lima', papel: 'Tech Lead', avatar: 'GL' },
   { nome: 'Andrey Souza', papel: 'Engenheiro Front-End', avatar: 'AS' },
   { nome: 'Gabriel Rocha', papel: 'Engenheiro Full Stack', avatar: 'GR' },
