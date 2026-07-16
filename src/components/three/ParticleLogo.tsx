@@ -10,6 +10,7 @@ import { useImageParticles } from '@/hooks/useImageParticles';
 const REPULSION_RADIUS = 1.2;    // raio de ação do mouse (unidades de mundo)
 const REPULSION_STRENGTH = 0.6;  // força do empurrão
 const CONVERGENCE_SPEED = 0.06;  // fração do caminho percorrida por frame
+const LOGO_OFFSET_X = 2.8;       // deslocamento do logo p/ direita (compensado na conta do mouse)
 
 export function ParticleLogo() {
   const pointsRef = useRef<THREE.Points>(null);
@@ -41,8 +42,9 @@ export function ParticleLogo() {
     const attr = pointsRef.current.geometry.attributes.position;
     const arr = attr.array as Float32Array;
 
-    // Mouse convertido de coords normalizadas (-1..1) para mundo no plano z=0
-    const mx = (state.pointer.x * state.viewport.width) / 2;
+    // Mouse: coords normalizadas (-1..1) → mundo no plano z=0,
+    // compensando o deslocamento do grupo de partículas
+    const mx = (state.pointer.x * state.viewport.width) / 2 - LOGO_OFFSET_X;
     const my = (state.pointer.y * state.viewport.height) / 2;
 
     for (let i = 0; i < arr.length; i += 3) {
@@ -75,7 +77,12 @@ export function ParticleLogo() {
   if (!home || !scattered) return null;
 
   return (
-    <Points ref={pointsRef} positions={scattered} stride={3}>
+    <Points
+      ref={pointsRef}
+      positions={scattered}
+      stride={3}
+      position={[LOGO_OFFSET_X, 0, 0]}
+    >
       <PointMaterial
         transparent
         color="#39d353"
