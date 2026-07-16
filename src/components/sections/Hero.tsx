@@ -19,7 +19,7 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0a0a0f] via-[#0a0a0f]/60 to-transparent" />
 
       {/* Camada 2: conteúdo */}
-      <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6">
+      <div className="pointer-events-none relative z-10 mx-auto flex h-full max-w-7xl items-center px-6">
         <div className="max-w-2xl">
           <span className="mb-6 inline-block rounded-full border border-[#39d353]/30 bg-[#39d353]/10 px-4 py-1.5 font-mono text-sm text-[#39d353]">
             +50.000 devs formados
@@ -39,7 +39,7 @@ export function Hero() {
             mercado.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div className="pointer-events-auto mt-10 flex flex-wrap items-center gap-4">
             <a
               href="#formacoes"
               className="rounded-full bg-[#39d353] px-8 py-4 font-semibold text-[#0a0a0f] shadow-[0_0_30px_rgba(57,211,83,0.4)] transition-shadow hover:shadow-[0_0_50px_rgba(57,211,83,0.6)]"
