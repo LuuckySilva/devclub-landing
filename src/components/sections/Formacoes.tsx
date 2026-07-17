@@ -1,16 +1,18 @@
 import { FORMACOES } from '@/lib/content';
 import { TiltCard } from '@/components/ui/TiltCard';
+import { STACK_ICONS } from '@/lib/stackIcons';
 
 export function Formacoes() {
   return (
-    <section id="formacoes" className="bg-[#0a0a0f] py-28">
+    <section id="formacoes" className="section-grid relative bg-[#0a0a0f] py-28">
       <div className="mx-auto max-w-7xl px-6">
         <span
-          data-reveal
-          className="font-mono text-base font-semibold uppercase tracking-[0.25em] text-[#39d353]"
-        >
-          {'// formações'}
-        </span>
+  data-reveal
+  className="inline-flex items-center gap-2 font-mono text-sm font-semibold uppercase tracking-[0.25em] text-[#39d353]"
+>
+  <span className="h-px w-8 bg-[#39d353]" aria-hidden />
+  Formações
+</span>
         <h2
           data-reveal
           className="mt-3 max-w-2xl text-4xl font-bold text-white md:text-5xl"
@@ -38,14 +40,18 @@ export function Formacoes() {
                   {f.descricao}
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
-                  {f.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-white/10 px-3 py-1 font-mono text-xs text-gray-400"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+  {f.tags.map((tag) => {
+    const Icon = STACK_ICONS[tag];
+    return (
+      <span
+        key={tag}
+        className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1 font-mono text-xs text-gray-400"
+      >
+        {Icon && <Icon className="h-3.5 w-3.5 text-[#39d353]" aria-hidden />}
+        {tag}
+      </span>
+    );
+  })}
                 </div>
               </article>
             </TiltCard>
