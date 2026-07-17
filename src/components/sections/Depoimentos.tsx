@@ -9,7 +9,7 @@ export function Depoimentos() {
   className="inline-flex items-center gap-2 font-mono text-sm font-semibold uppercase tracking-[0.25em] text-[#39d353]"
 >
   <span className="h-px w-8 bg-[#39d353]" aria-hidden />
-  Historias Reais
+  Histórias reais
 </span>
         <h2 data-reveal className="mt-3 max-w-2xl text-4xl font-bold text-white md:text-5xl">
           Quem passou por aqui, hoje vive de código

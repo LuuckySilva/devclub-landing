@@ -13,6 +13,7 @@ export function Stats() {
 >
   {s.prefixo}
   <span
+  
     data-counter={s.valor}
     data-decimal={'decimal' in s && s.decimal ? 'true' : 'false'}
   >

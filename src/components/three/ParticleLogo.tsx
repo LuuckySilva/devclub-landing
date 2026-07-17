@@ -1,7 +1,7 @@
 'use client';
 
 import * as THREE from 'three';
-import { useRef, useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import { useImageParticles } from '@/hooks/useImageParticles';
@@ -13,27 +13,33 @@ const CONVERGENCE_SPEED = 0.06;  // fração do caminho percorrida por frame
 const LOGO_OFFSET_X = 0;         // centralizado horizontalmente
 const LOGO_OFFSET_Y = 0.8;       // sobe pro centro-topo (texto vive embaixo)
 
-export function ParticleLogo() {
+interface ParticleLogoProps {
+  samplingStep?: number;
+}
+
+export function ParticleLogo({ samplingStep = 4 }: ParticleLogoProps) {
   const pointsRef = useRef<THREE.Points>(null);
 
   // Posições-ALVO: a forma do logo (o "lar" de cada partícula)
-  const home = useImageParticles('/images/logo-silhouette.png', {
-    samplingStep: 4,
+ const home = useImageParticles('/images/logo-silhouette.png', {
+    samplingStep,          // ← a prop, não o número fixo
     scale: 0.010,
   });
 
-  // Posições INICIAIS: nuvem esférica caótica ao redor da cena
   const scattered = useMemo(() => {
     if (!home) return null;
+
     const arr = new Float32Array(home.length);
     for (let i = 0; i < arr.length; i += 3) {
-      const r = 6 + Math.random() * 6;
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(2 * Math.random() - 1);
-      arr[i]     = r * Math.sin(phi) * Math.cos(theta);
+      const seed = (i / 3) % 17;
+      const r = 6 + (seed % 7) * 0.8;
+      const theta = (seed / 17) * Math.PI * 2;
+      const phi = Math.acos(2 * (seed / 16) - 1);
+      arr[i] = r * Math.sin(phi) * Math.cos(theta);
       arr[i + 1] = r * Math.sin(phi) * Math.sin(theta);
       arr[i + 2] = r * Math.cos(phi);
     }
+
     return arr;
   }, [home]);
 
@@ -90,3 +96,4 @@ export function ParticleLogo() {
     </Points>
   );
 }
+
