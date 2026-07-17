@@ -3,7 +3,7 @@ import Image from 'next/image';
 const LINKS = [
   { href: '#formacoes', label: 'Formações' },
   { href: '#historias', label: 'Histórias' },
-  { href: '#sobre', label: 'Quem ensina' },
+  { href: '#time', label: 'Quem ensina' },
 ];
 
 export function Navbar() {

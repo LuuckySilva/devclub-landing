@@ -46,7 +46,7 @@ export function Hero() {
               Quero começar agora
             </a>
             <a
-              href="#sobre"
+              href="#time"
               className="rounded-full border border-white/15 px-8 py-4 font-semibold text-white transition-colors hover:bg-white/5"
             >
               Conhecer o DevClub
