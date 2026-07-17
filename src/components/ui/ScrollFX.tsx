@@ -7,12 +7,14 @@ import { gsap, ScrollTrigger, useGSAP } from '@/lib/gsap';
 export function ScrollFX() {
   // ---- Lenis: smooth scroll sincronizado com o ScrollTrigger ----
   useEffect(() => {
-    const lenis = new Lenis();
+    const lenis = new Lenis({
+      // Lenis assume os links de âncora (#formacoes, #time...):
+      // scroll suave até o alvo, com offset compensando a navbar fixa
+      anchors: { offset: -80 },
+    });
 
-    // A cada scroll do Lenis, o ScrollTrigger recalcula posições
     lenis.on('scroll', ScrollTrigger.update);
 
-    // Lenis dirigido pelo ticker do GSAP: UM loop só na página inteira
     const raf = (time: number) => lenis.raf(time * 1000);
     gsap.ticker.add(raf);
     gsap.ticker.lagSmoothing(0);
