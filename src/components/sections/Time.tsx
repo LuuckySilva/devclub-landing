@@ -2,10 +2,14 @@ import { TIME } from '@/lib/content';
 
 export function Time() {
   return (
-    <section id="sobre" className="bg-[#0d1117] py-28">
+    <section id="time" className="section-grid relative bg-[#0a0a0f] py-28">
       <div className="mx-auto max-w-7xl px-6">
-       <span data-reveal className="font-mono text-base font-semibold uppercase tracking-[0.25em] text-[#39d353]">
-  {'// O time'}
+       <span
+  data-reveal
+  className="inline-flex items-center gap-2 font-mono text-sm font-semibold uppercase tracking-[0.25em] text-[#39d353]"
+>
+  <span className="h-px w-8 bg-[#39d353]" aria-hidden />
+  O Time DevClub
 </span>
         <h2 data-reveal className="mt-3 max-w-2xl text-4xl font-bold text-white md:text-5xl">
           Aprenda com quem constrói de verdade

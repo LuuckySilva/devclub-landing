@@ -1,10 +1,15 @@
 import { DEPOIMENTOS } from '@/lib/content';
 export function Depoimentos() {
   return (
-    <section id="historias" className="bg-[#0a0a0f] py-28">
+    <section id="historias" className="relative overflow-hidden bg-[#0a0a0f] py-28">
+      <div className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[700px] -translate-x-1/2 rounded-full bg-[#39d353]/[0.04] blur-[100px]" />
       <div className="mx-auto max-w-7xl px-6">
-       <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#39d353]/15 font-mono text-sm font-bold text-[#39d353]">
-  {'// Historias reais'}
+      <span
+  data-reveal
+  className="inline-flex items-center gap-2 font-mono text-sm font-semibold uppercase tracking-[0.25em] text-[#39d353]"
+>
+  <span className="h-px w-8 bg-[#39d353]" aria-hidden />
+  Historias Reais
 </span>
         <h2 data-reveal className="mt-3 max-w-2xl text-4xl font-bold text-white md:text-5xl">
           Quem passou por aqui, hoje vive de código
