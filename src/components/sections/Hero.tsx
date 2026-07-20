@@ -21,9 +21,9 @@ export function Hero() {
       {/* Camada 2: conteúdo centralizado na parte inferior */}
       <div className="pointer-events-none relative z-10 flex h-full flex-col items-center justify-end pb-20 text-center">
         <div className="max-w-3xl px-6">
-          <span className="mb-6 inline-block rounded-full border border-[#39d353]/30 bg-[#39d353]/10 px-4 py-1.5 font-mono text-sm text-[#39d353]">
-            +22.000 devs formados
-          </span>
+          <span className="mb-6 inline-block rounded-full border border-[#39d353]/40 bg-[#0a0a0f]/80 px-4 py-1.5 font-mono text-sm text-[#39d353] backdrop-blur-sm">
+  +22.000 devs formados
+</span>
 
           <h1 className="text-4xl font-bold leading-tight tracking-tight text-white md:text-6xl">
             A maior escola de{' '}

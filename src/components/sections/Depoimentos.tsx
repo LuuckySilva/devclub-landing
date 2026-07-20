@@ -3,7 +3,7 @@ import { Avatar } from '@/components/ui/Avatar';
 
 export function Depoimentos() {
   return (
-    <section id="historias" className="relative bg-[#0a0a0f] py-28">
+    <section id="historias" className="relative bg-[#0a0a0f] pt-28 pb-16">
       <div className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[700px] -translate-x-1/2 rounded-full bg-[#39d353]/[0.04] blur-[100px]" />
 
       <div className="mx-auto max-w-7xl px-6">
