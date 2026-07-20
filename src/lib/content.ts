@@ -112,25 +112,70 @@ export const FORMACOES = [
 
 export const DEPOIMENTOS = [
   {
-    nome: 'Carlos Mendes',
-    cargo: 'Antes: técnico de suporte → Hoje: Dev Full Stack',
+    nome: 'Lucas  Silva',
+    antes: 'Auxiliar administrativo',
+    hoje: 'Dev Full Stack',
+    empresa: 'InV-Stack, Minas Gerais',
+    tempo: '4  meses de estudo',
     texto:
-      'Foram várias noites em claro estudando. Tive muitos "não" e nunca abaixei a cabeça. Hoje tenho uma vaga que eu nem sonhava.',
-    avatar: 'CM',
+      'Foram várias noites em claro estudando igual um maluco. Tive muitos "não" e nunca abaixei a cabeça. Criei network com outros devs, montei portfólio com projetos reais e hoje tenho uma vaga que eu nem sonhava. O método do DevClub me deu o caminho — o resto foi persistência.',
+    avatar: 'LS',
+    foto: '/images/depoimentos/lucas.jpg',
   },
   {
     nome: 'Thais Ribeiro',
-    cargo: 'Antes: dona de hamburgueria → Hoje: Dev Front-End',
+    antes: 'Dona de hamburgueria',
+    hoje: 'Dev Front-End',
+    empresa: 'startup de logística',
+    tempo: '14 meses de estudo',
     texto:
-      'Me separei com duas filhas e voltei pra casa dos meus pais. Entendi que precisava estudar se quisesse me erguer. A programação foi a porta.',
+      'Me separei com duas filhas e voltei pra casa dos meus pais com uma mão na frente e outra atrás. Entendi que precisava estudar se quisesse me erguer. Um amigo programador me indicou o DevClub e mergulhei de cabeça. Hoje trabalho remoto, busco minhas filhas na escola e ganho mais do que a hamburgueria dava.',
     avatar: 'TR',
+    foto: '/images/depoimentos/thais.jpg',
   },
   {
     nome: 'André Nascimento',
-    cargo: 'Antes: professor de matemática → Hoje: Front-End Jr',
+    antes: 'Professor de matemática',
+    hoje: 'Front-End Jr',
+    empresa: 'consultoria de tecnologia',
+    tempo: '9 meses de estudo',
     texto:
-      'Comecei como full stack jr, mudei de cargo, recebi proposta melhor em menos de 2 anos. A curva de crescimento é real.',
+      'A lógica da matemática me ajudou, mas foi o método que fez a diferença: projeto real, código revisado e preparação de entrevista. Comecei como full stack jr, mudei de cargo e recebi proposta melhor em menos de 2 anos. A curva de crescimento dessa área é real.',
     avatar: 'AN',
+    foto: '/images/depoimentos/andre.jpg',
+  },
+  {
+    nome: 'Juliana Castro',
+    antes: 'Vendedora de loja',
+    hoje: 'Dev Front-End',
+    empresa: 'e-commerce nacional',
+    tempo: '12 meses de estudo',
+    texto:
+      'Trabalhava 10 horas em pé no shopping e estudava de madrugada. Teve dia de querer desistir, mas a comunidade não deixou. Quando publiquei meu primeiro projeto no LinkedIn, três recrutadores me chamaram na mesma semana. Assinei CLT com salário que dobrou minha renda.',
+    avatar: 'JC',
+    foto: '/images/depoimentos/juliana.jpg',
+  },
+  {
+    nome: 'Roberto Farias',
+    antes: 'Motorista de aplicativo',
+    hoje: 'Dev Back-End',
+    empresa: 'empresa de pagamentos',
+    tempo: '13 meses de estudo',
+    texto:
+      'Dirigia 12 horas por dia e ouvia aula de programação no trânsito. Com 3 horas de estudo por noite, em pouco mais de um ano saí do volante pro teclado. Hoje trabalho de casa, tenho plano de saúde e tempo com a família. Melhor decisão que já tomei.',
+    avatar: 'RF',
+    foto: '/images/depoimentos/roberto.jpg',
+  },
+  {
+    nome: 'Fernanda Lopes',
+    antes: 'Analista administrativa',
+    hoje: 'Dev Full Stack',
+    empresa: 'software house',
+    tempo: '10 meses de estudo',
+    texto:
+      'Vi minha função sendo automatizada e decidi ficar do lado de quem constrói a automação. Aprendi a programar usando IA como ferramenta, do jeito que o mercado pede agora. Em menos de um ano, saí de planilhas pra entregar features em produção.',
+    avatar: 'FL',
+    foto: '/images/depoimentos/fernanda.jpg',
   },
 ] as const;
 
@@ -149,10 +194,30 @@ export const STATS = [
 export const TIME = [
   {
     nome: 'Rodolfo Mori',
-    papel: 'Fundador & CEO — ex-Santander, BTG e Toro',
+    papel: 'Fundador & CEO',
+    bio: 'Passou por Santander, BTG Pactual e Toro antes de fundar o DevClub. Já formou milhares de devs com o mesmo método que usava pra contratar em empresas parceiras.',
     avatar: 'RM',
+    foto: '/images/time/rodolfo.jpg',
   },
-  { nome: 'George Lima', papel: 'Tech Lead', avatar: 'GL' },
-  { nome: 'Andrey Souza', papel: 'Engenheiro Front-End', avatar: 'AS' },
-  { nome: 'Gabriel Rocha', papel: 'Engenheiro Full Stack', avatar: 'GR' },
+  {
+    nome: 'George Lima',
+    papel: 'Tech Lead',
+    bio: 'Lidera a engenharia dos produtos DevClub. Referência do time em arquitetura e boas práticas, revisa e eleva o nível do código que os alunos aprendem.',
+    avatar: 'GL',
+    foto: '/images/time/george.jpg',
+  },
+  {
+    nome: 'Andrey Souza',
+    papel: 'Engenheiro Front-End',
+    bio: 'Especialista em interfaces e experiência do usuário. Constrói as páginas e plataformas do ecossistema DevClub com foco em performance e detalhe visual.',
+    avatar: 'AS',
+    foto: '/images/time/andrey.jpg',
+  },
+  {
+    nome: 'Gabriel Rocha',
+    papel: 'Engenheiro Full Stack',
+    bio: 'Atua de ponta a ponta nos sistemas internos do DevClub, do banco de dados à interface. A ponte entre o que o aluno aprende e o que o mercado usa.',
+    avatar: 'GR',
+    foto: '/images/time/gabriel.jpg',
+  },
 ] as const;
