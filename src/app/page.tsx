@@ -8,11 +8,12 @@ import { FinalCTA } from '@/components/sections/FinalCTA';
 import { Footer } from '@/components/sections/Footer';
 import { Navbar } from '@/components/ui/Navbar';
 import { ScrollFX } from '@/components/ui/ScrollFX';
+import { SejaMembro } from '@/components/sections/SejaMembro';
 
 export default function Home() {
   return (
     <main>
-       <ScrollFX />
+      <ScrollFX />
       <Navbar />
       <Hero />
       <SocialProof />
@@ -20,6 +21,7 @@ export default function Home() {
       <Depoimentos />
       <Stats />
       <Time />
+      <SejaMembro />
       <FinalCTA />
       <Footer />
     </main>
