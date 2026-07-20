@@ -9,6 +9,7 @@ import { Footer } from '@/components/sections/Footer';
 import { Navbar } from '@/components/ui/Navbar';
 import { ScrollFX } from '@/components/ui/ScrollFX';
 import { SejaMembro } from '@/components/sections/SejaMembro';
+import { ChatWidget } from '@/components/ui/ChatWidget';
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <SejaMembro />
       <FinalCTA />
       <Footer />
+      <ChatWidget />
     </main>
   );
 }
