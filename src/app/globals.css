@@ -43,3 +43,12 @@ body {
   background-size: 56px 56px;
   background-position: center;
 }
+
+.hero-line {
+  will-change: transform;
+}
+
+/* Fallback: se JS/GSAP falhar, título aparece normal */
+[data-hero-title] {
+  visibility: visible;
+}
