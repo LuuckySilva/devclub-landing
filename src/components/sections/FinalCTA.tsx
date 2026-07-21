@@ -1,5 +1,6 @@
 'use client';
 
+import { Magnetic } from '@/components/ui/Magnetic';
 import { useState } from 'react';
 
 export function FinalCTA() {
@@ -65,12 +66,16 @@ export function FinalCTA() {
               aria-label="WhatsApp"
               className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3.5 text-white placeholder-gray-500 outline-none transition-colors focus:border-[#39d353]/60"
             />
-            <button
-              type="submit"
-              className="w-full rounded-full bg-[#39d353] py-4 text-lg font-bold text-[#0a0a0f] shadow-[0_0_40px_rgba(57,211,83,0.4)] transition-shadow hover:shadow-[0_0_60px_rgba(57,211,83,0.7)]"
-            >
-              Quero minha vaga
-            </button>
+            <div className="text-center">
+  <Magnetic strength={0.25}>
+    <button
+      type="submit"
+      className="w-full min-w-[280px] rounded-full bg-[#39d353] px-10 py-4 text-lg font-bold text-[#0a0a0f] shadow-[0_0_40px_rgba(57,211,83,0.4)] transition-shadow hover:shadow-[0_0_60px_rgba(57,211,83,0.7)]"
+    >
+      Quero minha vaga
+    </button>
+  </Magnetic>
+</div>
           </form>
         )}
       </div>
