@@ -57,7 +57,7 @@ export function ChatWidget() {
 
       {/* Painel */}
       {aberto && (
-        <div className="fixed bottom-24 right-6 z-[60] flex h-[480px] w-[calc(100vw-3rem)] max-w-sm flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0d1117] shadow-2xl">
+        <div className="fixed bottom-24 right-6 z-[60] flex h-[min(480px,70vh)] w-[calc(100vw-3rem)] max-w-sm flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0d1117] shadow-2xl">
           <div className="border-b border-white/5 bg-[#09090b] px-5 py-4">
             <p className="font-bold text-white">Assistente DevClub</p>
             <p className="font-mono text-xs text-[#39d353]">

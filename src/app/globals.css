@@ -52,3 +52,17 @@ body {
 [data-hero-title] {
   visibility: visible;
 }
+
+/* Carrossel: no mobile, cards mais estreitos e vizinhos mais próximos */
+@media (max-width: 640px) {
+  [aria-roledescription='carrossel'] > div[aria-hidden] {
+    width: 280px !important;
+  }
+}
+
+/* prefers-reduced-motion: desliga a transição de deslize do coverflow */
+@media (prefers-reduced-motion: reduce) {
+  [aria-roledescription='carrossel'] [style*='translateX'] {
+    transition: none !important;
+  }
+}

@@ -11,21 +11,28 @@ const REPULSION_RADIUS = 1.2;    // raio de ação do mouse (unidades de mundo)
 const REPULSION_STRENGTH = 0.6;  // força do empurrão
 const CONVERGENCE_SPEED = 0.06;  // fração do caminho percorrida por frame
 const LOGO_OFFSET_X = 0;         // centralizado horizontalmente
-const LOGO_OFFSET_Y = 0.8;       // sobe pro centro-topo (texto vive embaixo)
 
 interface ParticleLogoProps {
   samplingStep?: number;
+  compact?: boolean;
 }
 
-export function ParticleLogo({ samplingStep = 4 }: ParticleLogoProps) {
+export function ParticleLogo({ samplingStep = 4, compact = false }: ParticleLogoProps) {
   const pointsRef = useRef<THREE.Points>(null);
 
-  // Posições-ALVO: a forma do logo (o "lar" de cada partícula)
- const home = useImageParticles('/images/logo-silhouette.png', {
-    samplingStep,          // ← a prop, não o número fixo
-    scale: 0.010,
+  // Posições-ALVO: a forma do logo (o "lar" de cada partícula).
+  // No mobile (compact), logo menor pra caber na viewport estreita.
+  const home = useImageParticles('/images/logo-silhouette.png', {
+    samplingStep,
+    scale: compact ? 0.008 : 0.010,
   });
 
+  // Offset vertical: no mobile o logo desce (fica mais centralizado
+  // com o texto); no desktop sobe pro centro-topo
+  const offsetY = compact ? 0.3 : 0.8;
+
+  // Posições INICIAIS: nuvem esférica caótica (determinística p/ evitar
+  // mismatch de hidratação — sem Math.random no primeiro paint)
   const scattered = useMemo(() => {
     if (!home) return null;
 
@@ -51,7 +58,7 @@ export function ParticleLogo({ samplingStep = 4 }: ParticleLogoProps) {
 
     // Mouse: coords normalizadas (-1..1) → mundo, compensando o offset do grupo
     const mx = (state.pointer.x * state.viewport.width) / 2 - LOGO_OFFSET_X;
-    const my = (state.pointer.y * state.viewport.height) / 2 - LOGO_OFFSET_Y;
+    const my = (state.pointer.y * state.viewport.height) / 2 - offsetY;
 
     for (let i = 0; i < arr.length; i += 3) {
       let tx = home[i];
@@ -83,12 +90,12 @@ export function ParticleLogo({ samplingStep = 4 }: ParticleLogoProps) {
       ref={pointsRef}
       positions={scattered}
       stride={3}
-      position={[LOGO_OFFSET_X, LOGO_OFFSET_Y, 0]}
+      position={[LOGO_OFFSET_X, offsetY, 0]}
     >
       <PointMaterial
         transparent
         color="#39d353"
-        size={0.035}
+        size={compact ? 0.045 : 0.035}
         sizeAttenuation
         depthWrite={false}
         blending={THREE.AdditiveBlending}
@@ -96,4 +103,3 @@ export function ParticleLogo({ samplingStep = 4 }: ParticleLogoProps) {
     </Points>
   );
 }
-

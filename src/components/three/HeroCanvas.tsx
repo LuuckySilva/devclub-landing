@@ -43,16 +43,16 @@ export function HeroCanvas() {
 
   return (
     <div ref={wrapRef} className="h-full w-full">
-      <Canvas
+     <Canvas
         dpr={isMobile ? [1, 1.5] : [1, 2]}
         frameloop={visible ? 'always' : 'never'}
-        camera={{ position: [0, 0, 8], fov: 50 }}
+        camera={{ position: [0, 0, isMobile ? 11 : 8], fov: 50 }}
         gl={{
           antialias: false,
           powerPreference: isMobile ? 'low-power' : 'high-performance',
         }}
       >
-        <ParticleLogo samplingStep={isMobile ? 7 : 4} />
+        <ParticleLogo samplingStep={isMobile ? 7 : 4} compact={isMobile} />
 
         {/* Bloom SÓ no desktop: pós-processamento é o maior custo
             de GPU do herói — no mobile, o AdditiveBlending das
