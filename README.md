@@ -1,36 +1,154 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# DevClub — Página Institucional
 
-First, run the development server:
+Página institucional conceitual do DevClub, construída para o concurso de vaga Full Stack.
+O centro da experiência é um herói em WebGL onde milhares de partículas convergem do caos
+para formar o logo da marca, reagindo ao movimento do mouse em tempo real.
+
+**🔗 Demo ao vivo:** https://devclub-landing-three.vercel.app
+
+> Página conceitual desenvolvida como desafio técnico. Todos os depoimentos, nomes de
+> alunos e números de empresas são fictícios, conforme autorizado no edital do concurso.
+
+---
+
+## Stack
+
+| Camada | Tecnologia | Por quê |
+|---|---|---|
+| Framework | **Next.js 16** (App Router) | Server Components por padrão: HTML renderizado no servidor, JS só onde há interação |
+| Linguagem | **TypeScript** | Contratos de dados tipados em todo o conteúdo da página |
+| Estilos | **Tailwind CSS v4** | Design tokens consistentes sem CSS órfão |
+| 3D / WebGL | **React Three Fiber + drei + postprocessing** | Three.js declarativo, com cleanup automático de geometrias e materiais |
+| Animação | **GSAP 3.13 + ScrollTrigger + SplitText** | Gratuito desde abr/2025; ScrollTrigger não tem substituto real para scroll coreografado |
+| Scroll | **Lenis** | Smooth scroll que integra nativamente com o ScrollTrigger |
+| Ícones | **react-icons** (Simple Icons + Feather) | Logos de tecnologias e empresas |
+| Deploy | **Vercel** | CI/CD automático a cada push na `main` |
+
+---
+
+## Funcionalidades
+
+### Herói interativo em WebGL
+- Logo do DevClub formado por ~14.600 partículas (desktop) amostradas pixel a pixel de um PNG
+- Animação de convergência: as partículas nascem em uma nuvem esférica e viajam até a forma do logo
+- Repulsão de mouse em tempo real — o cursor "abre buracos" na forma
+- Entrada coreografada: título, subtítulo e CTAs entram em cascata sincronizados com a convergência
+
+### Interações e microinterações
+- Carrossel coverflow 3D das formações: navegação por teclado (← →), scroll, setas e indicadores
+- Cards com inclinação 3D e brilho radial que segue o cursor
+- Botões magnéticos nos CTAs principais (retorno com easing elástico)
+- Marquee infinito de empresas com cores de marca
+- Contadores animados que sobem ao entrar na viewport
+- Reveals em cascata por seção (batch com stagger)
+- Modais de detalhe da formação e da área do aluno
+- Assistente de dúvidas com sugestões rápidas e respostas por correspondência de palavras-chave
+
+### Conversão
+- Menu com CTA primário ("Seja membro") e secundário ("Área do aluno")
+- Seção de comunidade e formulário de captura de contato com estado de sucesso
+
+---
+
+## Como rodar localmente
+
+Pré-requisitos: Node.js 18.18+ e npm.
 
 ```bash
+# 1. Clone o repositório
+git clone https://github.com/LuuckySilva/devclub-landing.git
+cd devclub-landing
+
+# 2. Instale as dependências
+npm install
+
+# 3. Rode em modo de desenvolvimento
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Build de produção
+npm run build && npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Variáveis de ambiente:** nenhuma. A página é totalmente estática e não depende de serviços externos.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Arquitetura
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── app/
+│   ├── layout.tsx          # Fontes (Space Grotesk + JetBrains Mono) e metadata
+│   ├── page.tsx            # Composição das seções (Server Component)
+│   └── globals.css         # Design tokens e utilitários
+├── components/
+│   ├── sections/           # Uma seção por arquivo (Hero, Formações, Histórias...)
+│   ├── three/              # Cena WebGL: HeroCanvas e ParticleLogo
+│   └── ui/                 # Peças reutilizáveis (Navbar, Avatar, Magnetic, ChatWidget...)
+├── hooks/
+│   └── useImageParticles.ts # Amostragem de pixels → posições 3D
+└── lib/
+    ├── content.ts          # Todo o conteúdo da página (fonte única de verdade)
+    ├── stackIcons.tsx      # Mapas tag → ícone e empresa → cor de marca
+    ├── faq.ts              # Base de conhecimento do assistente
+    └── gsap.ts             # Registro centralizado dos plugins GSAP
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Decisões de arquitetura
 
-## Deploy on Vercel
+**Conteúdo separado de apresentação.** Formações, depoimentos, time, estatísticas e empresas
+vivem em `src/lib/content.ts`. Os componentes apenas renderizam. Trocar os dados fictícios por
+dados reais significa editar um arquivo — nenhum componente é tocado.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Server Components por padrão.** Apenas os componentes com estado ou animação carregam
+`'use client'`. As demais seções chegam ao navegador como HTML puro, sem JavaScript.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Canvas 3D isolado no cliente.** O `HeroCanvas` é importado com `next/dynamic` e `ssr: false`,
+porque o Three.js acessa APIs de navegador. Isso também mantém o bundle inicial leve — o chunk
+3D só é baixado no cliente, com um fundo em gradiente como estado de carregamento.
+
+**Degradação em cascata.** Ícone de tecnologia ausente renderiza só o texto; foto de pessoa
+ausente renderiza as iniciais; JavaScript desabilitado ainda entrega a página completa em HTML.
+Nada quebra por falta de um recurso opcional.
+
+---
+
+## Performance e acessibilidade
+
+Lighthouse em produção (desktop): **Desempenho 76 · Acessibilidade 96 · Boas práticas 96 · SEO 100**.
+
+Otimizações aplicadas ao herói WebGL:
+- `devicePixelRatio` limitado (≤2 desktop, ≤1.5 mobile) — evita renderizar pixels invisíveis
+- Contagem de partículas reduzida no mobile via passo de amostragem maior (~4.800 vs ~14.600)
+- Pós-processamento (Bloom) desativado no mobile — é o passe mais caro de GPU
+- Loop de render pausado quando o herói sai da viewport (`IntersectionObserver`)
+- Nuvem inicial de partículas gerada de forma determinística, evitando divergência de hidratação
+
+Acessibilidade:
+- `prefers-reduced-motion` respeitado via `gsap.matchMedia()` — sem animação, a página aparece completa
+- Foco de teclado visível no carrossel, com navegação por setas
+- Rótulos ARIA nos controles do carrossel, modais e assistente
+- Contraste WCAG AA no texto sobre fundos escuros
+
+---
+
+## Uso de IA
+
+A construção usou IA como ferramenta de engenharia, conforme incentivado no edital: pesquisa
+das técnicas de sistemas de partículas, revisão de arquitetura e aceleração de implementação.
+Toda decisão técnica deste repositório foi avaliada, testada e ajustada manualmente — o
+documento `docs/DEFESA-TECNICA.md` registra o porquê de cada escolha.
+
+---
+
+## Autor
+
+**Lucas Silva** — Desenvolvedor Full Stack
+
+- GitHub: [github.com/LuuckySilva](https://github.com/LuuckySilva)
+- LinkedIn: [linkedin.com/in/olucas-silvaa](https://linkedin.com/in/olucas-silvaa)
