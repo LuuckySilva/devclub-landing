@@ -9,6 +9,8 @@ export const FORMACOES = [
     gradient: 'from-emerald-500/25 via-green-600/10 to-transparent',
     duracao: '12 meses',
     nivel: 'Do zero ao primeiro emprego',
+    preco: 'R$ 1.997',
+    parcelado: '12x de R$ 197',
     aprendizados: [
       'Lógica de programação, HTML, CSS e JavaScript do absoluto zero',
       'React com projetos reais de portfólio',
@@ -28,6 +30,8 @@ export const FORMACOES = [
     gradient: 'from-sky-500/25 via-blue-600/10 to-transparent',
     duracao: '8 meses',
     nivel: 'Iniciante a intermediário',
+    preco: 'R$ 1.497',
+    parcelado: '12x de R$ 147',
     aprendizados: [
       'HTML5 semântico e CSS3 moderno (Flexbox e Grid)',
       'JavaScript profundo: DOM, eventos e assincronismo',
@@ -46,6 +50,8 @@ export const FORMACOES = [
     gradient: 'from-amber-500/25 via-yellow-600/10 to-transparent',
     duracao: '6 meses',
     nivel: 'Do zero à análise profissional',
+    preco: 'R$ 1.597',
+    parcelado: '12x de R$ 157',
     aprendizados: [
       'Python aplicado a dados',
       'SQL para consultas e modelagem',
@@ -64,6 +70,8 @@ export const FORMACOES = [
     gradient: 'from-purple-500/25 via-violet-600/10 to-transparent',
     duracao: '6 meses',
     nivel: 'Todos os níveis',
+    preco: 'R$ 1.397',
+    parcelado: '12x de R$ 137',
     aprendizados: [
       'Fundamentos de LLMs e IA generativa',
       'Prompt engineering profissional',
@@ -82,6 +90,8 @@ export const FORMACOES = [
     gradient: 'from-rose-500/25 via-pink-600/10 to-transparent',
     duracao: '12 meses',
     nivel: 'Profissionais e empreendedores',
+    preco: 'R$ 2.997',
+    parcelado: '12x de R$ 297',
     aprendizados: [
       'Fundamentos e arquitetura tecnológica da IA',
       'Engenharia de prompt aplicada a negócios',
@@ -100,6 +110,8 @@ export const FORMACOES = [
     gradient: 'from-yellow-400/30 via-amber-600/10 to-transparent',
     duracao: '12 meses',
     nivel: 'Avançado',
+    preco: 'R$ 3.997',
+    parcelado: '12x de R$ 397',
     aprendizados: [
       'Arquitetura avançada com React e Node.js',
       'NestJS e APIs de nível enterprise',
@@ -112,11 +124,11 @@ export const FORMACOES = [
 
 export const DEPOIMENTOS = [
   {
-    nome: 'Lucas  Silva',
+    nome: 'Lucas Silva',
     antes: 'Auxiliar administrativo',
     hoje: 'Dev Full Stack',
     empresa: 'InV-Stack, Minas Gerais',
-    tempo: '4  meses de estudo',
+    tempo: '4 meses de estudo',
     texto:
       'Foram várias noites em claro estudando igual um maluco. Tive muitos "não" e nunca abaixei a cabeça. Criei network com outros devs, montei portfólio com projetos reais e hoje tenho uma vaga que eu nem sonhava. O método do DevClub me deu o caminho — o resto foi persistência.',
     avatar: 'LS',

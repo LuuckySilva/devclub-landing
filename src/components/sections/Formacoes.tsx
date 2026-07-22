@@ -3,10 +3,12 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { FORMACOES } from '@/lib/content';
 import { STACK_ICONS } from '@/lib/stackIcons';
+import { CheckoutModal } from '@/components/ui/CheckoutModal';
 
 type Formacao = (typeof FORMACOES)[number];
 
 export function Formacoes() {
+  const [checkout, setCheckout] = useState<Formacao | null>(null);
   const [ativo, setAtivo] = useState(0);
   const [modal, setModal] = useState<Formacao | null>(null);
   const total = FORMACOES.length;
@@ -251,17 +253,19 @@ export function Formacoes() {
                 );
               })}
             </div>
-
-            <a
-              href="#seja-membro"
-              onClick={() => setModal(null)}
-              className="mt-10 inline-block w-full rounded-full bg-[#39d353] py-4 text-center font-bold text-[#0a0a0f] shadow-[0_0_30px_rgba(57,211,83,0.35)] transition-shadow hover:shadow-[0_0_45px_rgba(57,211,83,0.55)]"
+<button
+              onClick={() => {
+                setCheckout(modal);
+                setModal(null);
+              }}
+              className="mt-10 w-full rounded-full bg-[#39d353] py-4 text-center font-bold text-[#0a0a0f] shadow-[0_0_30px_rgba(57,211,83,0.35)] transition-shadow hover:shadow-[0_0_45px_rgba(57,211,83,0.55)]"
             >
               Quero essa formação
-            </a>
+            </button>
           </div>
         </div>
       )}
+      <CheckoutModal formacao={checkout} onFechar={() => setCheckout(null)} />
     </section>
   );
 }
