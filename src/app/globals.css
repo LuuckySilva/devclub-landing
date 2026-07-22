@@ -66,3 +66,14 @@ body {
     transition: none !important;
   }
 }
+
+html {
+  background: #09090b;
+  overflow-x: clip;
+}
+
+body {
+  background: #09090b;
+  overflow-x: clip;
+  max-width: 100vw;
+}

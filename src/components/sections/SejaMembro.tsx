@@ -4,7 +4,7 @@ export function SejaMembro() {
       id="seja-membro"
       className="relative overflow-hidden border-y border-white/5 bg-[#0a0a0f] py-24"
     >
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[400px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39d353]/[0.06] blur-[110px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[400px] w-[min(700px,95vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39d353]/[0.06] blur-[110px]" />
 
       <div className="relative mx-auto max-w-4xl px-6 text-center">
         <span

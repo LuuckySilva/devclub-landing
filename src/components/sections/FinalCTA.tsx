@@ -8,7 +8,7 @@ export function FinalCTA() {
 
   return (
     <section className="relative overflow-hidden bg-[#0d1117] py-32">
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39d353]/10 blur-[120px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[min(800px,95vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39d353]/10 blur-[120px]" />
 
       <div className="relative mx-auto max-w-2xl px-6 text-center">
         <h2
