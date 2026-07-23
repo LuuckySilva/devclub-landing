@@ -127,7 +127,7 @@ export const DEPOIMENTOS = [
     nome: 'Lucas Silva',
     antes: 'Auxiliar administrativo',
     hoje: 'Dev Full Stack',
-    empresa: 'InV-Stack, Minas Gerais',
+    empresa: 'Startup de Devs, Minas Gerais',
     tempo: '4 meses de estudo',
     texto:
       'Foram várias noites em claro estudando igual um maluco. Tive muitos "não" e nunca abaixei a cabeça. Criei network com outros devs, montei portfólio com projetos reais e hoje tenho uma vaga que eu nem sonhava. O método do DevClub me deu o caminho — o resto foi persistência.',
