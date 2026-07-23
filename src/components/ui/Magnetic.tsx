@@ -28,7 +28,7 @@ export function Magnetic({ children, strength = 0.35 }: MagneticProps) {
   };
 
   const onLeave = () => {
-    // elastic: volta com "molejo" — a assinatura do efeito magnético
+    // retorno com easing elastico
     gsap.to(ref.current, {
       x: 0,
       y: 0,

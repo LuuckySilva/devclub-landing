@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
+import { FloatingWords } from './FloatingWords';
+import { AmbientParticles } from './AmbientParticles';
 import { ParticleLogo } from './ParticleLogo';
 
 export function HeroCanvas() {
@@ -15,8 +17,7 @@ export function HeroCanvas() {
     );
   });
 
-  // Detecção de mobile: tela pequena OU ponteiro "grosso" (touch).
-  // Roda só no cliente (useEffect) — nunca no servidor.
+  // roda apenas no cliente
   useEffect(() => {
     const update = () => {
       setIsMobile(
@@ -52,11 +53,11 @@ export function HeroCanvas() {
           powerPreference: isMobile ? 'low-power' : 'high-performance',
         }}
       >
+    
+          <AmbientParticles count={isMobile ? 250 : 450} />
         <ParticleLogo samplingStep={isMobile ? 7 : 4} compact={isMobile} />
 
-        {/* Bloom SÓ no desktop: pós-processamento é o maior custo
-            de GPU do herói — no mobile, o AdditiveBlending das
-            partículas já entrega o brilho essencial */}
+        {/* Bloom apenas no desktop: passe mais caro de GPU */}
         {!isMobile && (
           <EffectComposer>
             <Bloom

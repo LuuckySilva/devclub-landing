@@ -3,15 +3,20 @@
 import { useEffect } from 'react';
 import Lenis from 'lenis';
 import { gsap, ScrollTrigger, useGSAP } from '@/lib/gsap';
+import { assinarConsole } from '@/lib/consoleSignature';
 
 export function ScrollFX() {
   // ---- Lenis: smooth scroll sincronizado com o ScrollTrigger ----
   useEffect(() => {
+    assinarConsole();
+    
     const lenis = new Lenis({
+      
       // Lenis assume os links de âncora (#formacoes, #time...):
       // scroll suave até o alvo, com offset compensando a navbar fixa
       anchors: { offset: -80 },
     });
+    
 
     lenis.on('scroll', ScrollTrigger.update);
 
@@ -33,8 +38,7 @@ export function ScrollFX() {
       // Estado inicial: escondido e deslocado pra baixo
       gsap.set('[data-reveal]', { y: 50, opacity: 0 });
 
-      // batch: elementos que entram na viewport juntos animam juntos,
-      // com stagger — cards de um grid sobem em cascata
+      // elementos que entram juntos animam em cascata
       ScrollTrigger.batch('[data-reveal]', {
         start: 'top 85%',
         once: true,
@@ -70,5 +74,5 @@ export function ScrollFX() {
     });
   });
 
-  return null; // não renderiza nada — só efeitos
+  return null; // componente sem render, apenas efeitos
 }

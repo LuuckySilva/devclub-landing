@@ -21,7 +21,6 @@ export function ChatWidget() {
   const [input, setInput] = useState('');
   const fimRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll pro fim a cada mensagem nova
   useEffect(() => {
     fimRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [mensagens, digitando]);
@@ -34,7 +33,7 @@ export function ChatWidget() {
     setInput('');
     setDigitando(true);
 
-    // Delay simulando processamento — dá ritmo de conversa real
+    // pequeno delay antes da resposta
     setTimeout(() => {
       setMensagens((prev) => [
         ...prev,
@@ -55,75 +54,83 @@ export function ChatWidget() {
         {aberto ? '✕' : '💬'}
       </button>
 
-      {/* Painel */}
       {aberto && (
-        <div className="fixed bottom-24 right-6 z-[60] flex h-[min(480px,70vh)] w-[calc(100vw-3rem)] max-w-sm flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0d1117] shadow-2xl">
-          <div className="border-b border-white/5 bg-[#09090b] px-5 py-4">
-            <p className="font-bold text-white">Assistente DevClub</p>
-            <p className="font-mono text-xs text-[#39d353]">
-              ● online — respostas na hora
-            </p>
-          </div>
+        <>
+          {/* Overlay escuro atrás do chat (apenas mobile) */}
+          <div
+            onClick={() => setAberto(false)}
+            className="fixed inset-0 z-[59] bg-black/60 backdrop-blur-[2px] md:hidden"
+          />
 
-          <div className="flex-1 space-y-3 overflow-y-auto p-4">
-            {mensagens.map((m, i) => (
-              <div
-                key={i}
-                className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
-                  m.autor === 'bot'
-                    ? 'bg-white/[0.05] text-gray-200'
-                    : 'ml-auto bg-[#39d353]/15 text-[#c8f5d4]'
-                }`}
-              >
-                {m.texto}
-              </div>
-            ))}
+          {/* Painel do chat, destacado da página */}
+          <div className="fixed bottom-24 right-6 z-[60] flex h-[min(480px,70vh)] w-[calc(100vw-3rem)] max-w-sm flex-col overflow-hidden rounded-2xl border border-[#39d353]/25 bg-[#10161f] shadow-[0_12px_50px_rgba(0,0,0,0.85)] ring-1 ring-white/10">
+            <div className="border-b border-white/5 bg-[#09090b] px-5 py-4">
+              <p className="font-bold text-white">Assistente DevClub</p>
+              <p className="font-mono text-xs text-[#39d353]">
+                ● online — respostas na hora
+              </p>
+            </div>
 
-            {digitando && (
-              <div className="w-16 rounded-2xl bg-white/[0.05] px-4 py-3 font-mono text-xs text-gray-400">
-                <span className="animate-pulse">● ● ●</span>
-              </div>
-            )}
-            <div ref={fimRef} />
-          </div>
+            <div className="flex-1 space-y-3 overflow-y-auto p-4">
+              {mensagens.map((m, i) => (
+                <div
+                  key={i}
+                  className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+                    m.autor === 'bot'
+                      ? 'bg-white/[0.05] text-gray-200'
+                      : 'ml-auto bg-[#39d353]/15 text-[#c8f5d4]'
+                  }`}
+                >
+                  {m.texto}
+                </div>
+              ))}
 
-          {/* Sugestões rápidas */}
-          <div className="flex flex-wrap gap-2 border-t border-white/5 px-4 py-3">
-            {SUGESTOES.map((s) => (
-              <button
-                key={s}
-                onClick={() => enviar(s)}
-                className="rounded-full border border-[#39d353]/30 px-3 py-1 font-mono text-xs text-[#39d353] transition-colors hover:bg-[#39d353]/10"
-              >
-                {s}
-              </button>
-            ))}
-          </div>
+              {digitando && (
+                <div className="w-16 rounded-2xl bg-white/[0.05] px-4 py-3 font-mono text-xs text-gray-400">
+                  <span className="animate-pulse">● ● ●</span>
+                </div>
+              )}
+              <div ref={fimRef} />
+            </div>
 
-          {/* Input */}
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              enviar(input);
-            }}
-            className="flex gap-2 border-t border-white/5 p-3"
-          >
-            <input
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Digite sua dúvida..."
-              aria-label="Digite sua dúvida"
-              className="flex-1 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white placeholder-gray-600 outline-none focus:border-[#39d353]/60"
-            />
-            <button
-              type="submit"
-              aria-label="Enviar"
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#39d353] font-bold text-[#0a0a0f] transition-transform hover:scale-105"
+            {/* Sugestões rápidas */}
+            <div className="flex flex-wrap gap-2 border-t border-white/5 px-4 py-3">
+              {SUGESTOES.map((s) => (
+                <button
+                  key={s}
+                  onClick={() => enviar(s)}
+                  className="rounded-full border border-[#39d353]/30 px-3 py-1 font-mono text-xs text-[#39d353] transition-colors hover:bg-[#39d353]/10"
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+
+            {/* Input */}
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                enviar(input);
+              }}
+              className="flex gap-2 border-t border-white/5 p-3"
             >
-              →
-            </button>
-          </form>
-        </div>
+              <input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Digite sua dúvida..."
+                aria-label="Digite sua dúvida"
+                className="flex-1 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white placeholder-gray-600 outline-none focus:border-[#39d353]/60"
+              />
+              <button
+                type="submit"
+                aria-label="Enviar"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#39d353] font-bold text-[#0a0a0f] transition-transform hover:scale-105"
+              >
+                →
+              </button>
+            </form>
+          </div>
+        </>
       )}
     </>
   );

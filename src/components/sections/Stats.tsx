@@ -6,7 +6,6 @@ export function Stats() {
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-10 px-6 md:grid-cols-4">
         {STATS.map((s) => (
           <div key={s.label} className="text-center">
-            {/* data-* guarda o alvo do counter — a animação GSAP lê daqui depois */}
             <p
   data-reveal
   className="text-4xl font-bold text-[#39d353] md:text-5xl"

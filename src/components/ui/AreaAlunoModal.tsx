@@ -32,8 +32,7 @@ export function AreaAlunoModal({ aberto, onFechar }: AreaAlunoModalProps) {
           Entre com seus dados de acesso da plataforma.
         </p>
 
-        {/* Formulário VISUAL — página conceitual, sem autenticação real.
-            preventDefault impede o reload; nenhum dado é enviado. */}
+        {/* demonstração: nenhum dado é processado */}
         <form className="mt-6 space-y-4" onSubmit={(e) => e.preventDefault()}>
           <div>
             <label

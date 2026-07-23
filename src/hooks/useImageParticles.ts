@@ -47,7 +47,7 @@ export function useImageParticles(
 
       ctx.drawImage(img, 0, 0);
 
-      // Array plano [R,G,B,A, R,G,B,A, ...] — 4 valores por pixel
+      // array plano [R,G,B,A, ...], 4 valores por pixel
       const { data } = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
       const points: number[] = [];

@@ -1,5 +1,6 @@
 'use client';
 
+import { FloatingWords } from '@/components/three/FloatingWords';
 import dynamic from 'next/dynamic';
 import { useRef } from 'react';
 import { gsap, SplitText, useGSAP } from '@/lib/gsap';
@@ -18,7 +19,7 @@ export function Hero() {
       const mm = gsap.matchMedia();
 
       mm.add('(prefers-reduced-motion: no-preference)', () => {
-        // Divide a headline em palavras (SplitText — grátis desde o GSAP 3.13)
+        
         const split = new SplitText('[data-hero-title]', {
           type: 'lines',
           mask: 'lines',
@@ -57,6 +58,8 @@ export function Hero() {
       <div className="absolute inset-0">
         <HeroCanvas />
       </div>
+        {/* Palavras fantasma sobre o canvas, atrás do texto */}
+      <FloatingWords />
 
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center_bottom,#09090b_0%,transparent_60%)]" />
 

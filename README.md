@@ -137,14 +137,6 @@ Acessibilidade:
 
 ---
 
-## Uso de IA
-
-A construção usou IA como ferramenta de engenharia, conforme incentivado no edital: pesquisa
-das técnicas de sistemas de partículas, revisão de arquitetura e aceleração de implementação.
-Toda decisão técnica deste repositório foi avaliada, testada e ajustada manualmente — o
-documento `docs/DEFESA-TECNICA.md` registra o porquê de cada escolha.
-
----
 
 ## Autor
 

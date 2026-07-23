@@ -49,7 +49,6 @@ export function CheckoutModal({ formacao, onFechar }: CheckoutModalProps) {
         </button>
 
         {concluido ? (
-          /* ---------- Estado de sucesso ---------- */
           <div className="p-10 text-center md:p-16">
             <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#39d353]/15 text-4xl text-[#39d353]">
               ✓
@@ -71,7 +70,6 @@ export function CheckoutModal({ formacao, onFechar }: CheckoutModalProps) {
           </div>
         ) : (
           <div className="grid md:grid-cols-[1fr_1.2fr]">
-            {/* ---------- Coluna esquerda: resumo do pedido ---------- */}
             <aside
               className={`relative overflow-hidden bg-gradient-to-br p-8 md:p-10 ${formacao.gradient}`}
             >
@@ -128,12 +126,10 @@ export function CheckoutModal({ formacao, onFechar }: CheckoutModalProps) {
               </div>
             </aside>
 
-            {/* ---------- Coluna direita: formulário ---------- */}
             <div className="p-8 md:p-10">
               <h4 className="text-xl font-bold text-white">Seus dados</h4>
 
-              {/* Formulário VISUAL: página conceitual, sem processamento real.
-                  preventDefault impede o reload; nenhum dado sai da página. */}
+              {/* demonstração: nenhum dado é processado */}
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -212,7 +208,7 @@ export function CheckoutModal({ formacao, onFechar }: CheckoutModalProps) {
   );
 }
 
-/* Campo de formulário reutilizável — evita repetir 8 blocos idênticos */
+/* input padrão do formulário */
 function Campo({
   id,
   label,

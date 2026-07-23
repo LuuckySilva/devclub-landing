@@ -77,3 +77,39 @@ body {
   overflow-x: clip;
   max-width: 100vw;
 }
+
+/* Palavras fantasma do hero: deriva com sensação de espaço */
+@keyframes derivar-1 {
+  0%, 100% { transform: rotate(var(--rotacao)) translate(0, 0) scale(1); }
+  50%      { transform: rotate(var(--rotacao)) translate(140px, -90px) scale(1.15); }
+}
+@keyframes derivar-2 {
+  0%, 100% { transform: rotate(var(--rotacao)) translate(0, 0) scale(1); }
+  50%      { transform: rotate(var(--rotacao)) translate(-160px, 80px) scale(0.85); }
+}
+@keyframes derivar-3 {
+  0%, 100% { transform: rotate(var(--rotacao)) translate(0, 0) scale(1); }
+  33%      { transform: rotate(var(--rotacao)) translate(90px, 110px) scale(1.1); }
+  66%      { transform: rotate(var(--rotacao)) translate(-70px, 60px) scale(0.9); }
+}
+@keyframes derivar-4 {
+  0%, 100% { transform: rotate(var(--rotacao)) translate(0, 0) scale(1); }
+  50%      { transform: rotate(var(--rotacao)) translate(-120px, -130px) scale(1.2); }
+}
+@keyframes derivar-5 {
+  0%, 100% { transform: rotate(var(--rotacao)) translate(0, 0) scale(1); }
+  33%      { transform: rotate(var(--rotacao)) translate(80px, -70px) scale(1.1); }
+  66%      { transform: rotate(var(--rotacao)) translate(-100px, 40px) scale(0.85); }
+}
+
+.derivar-1 { animation: derivar-1 9s  ease-in-out infinite; }
+.derivar-2 { animation: derivar-2 11s ease-in-out infinite; }
+.derivar-3 { animation: derivar-3 13s ease-in-out infinite; }
+.derivar-4 { animation: derivar-4 10s ease-in-out infinite; }
+.derivar-5 { animation: derivar-5 12s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .derivar-1, .derivar-2, .derivar-3, .derivar-4, .derivar-5 {
+    animation: none;
+  }
+}

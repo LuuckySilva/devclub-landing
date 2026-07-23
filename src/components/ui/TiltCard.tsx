@@ -49,7 +49,7 @@ export function TiltCard({ children, className = '', ...rest }: TiltCardProps) {
       className={`group relative will-change-transform ${className}`}
       {...rest}
     >
-      {/* Glow que segue o cursor — invisível até o hover */}
+      {/* glow que acompanha o cursor no hover */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
